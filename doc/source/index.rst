@@ -3,9 +3,9 @@ libmrhab
 .. image:: banner.png
    :align: center
    
-libmrhab is an open source library which is intended to help developing user 
-applications which make use modules which are updated with a callback oriented 
-design.
+The libmrhab library offers support for developing applications using a module 
+based structure. Modules are implemented by the application, which are then 
+updated with recieved events by using a callback based design.
 
 This documentation includes listings for the internal functions, enumerations, 
 etc. used by the library itself. These are not meant to be used directly for 
