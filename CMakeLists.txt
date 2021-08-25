@@ -62,26 +62,26 @@ set(SRC_DIR_PATH "${CMAKE_SOURCE_DIR}/src/")
 set(INCLUDE_DIR_PATH "${CMAKE_SOURCE_DIR}/include/")
 
 set(SRC_LIST_MODULE_TOOLS "${SRC_DIR_PATH}/libmrhab/Module/Tools/MRH_ModuleLogger.cpp"
-					      "${SRC_DIR_PATH}/libmrhab/Module/Tools/MRH_ModuleTimer.cpp"
-					      "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Tools/MRH_ModuleLogger.h"
-					      "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Tools/MRH_ModuleTimer.h")
+                          "${SRC_DIR_PATH}/libmrhab/Module/Tools/MRH_ModuleTimer.cpp"
+                          "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Tools/MRH_ModuleLogger.h"
+                          "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Tools/MRH_ModuleTimer.h")
                     
 set(SRC_LIST_MODULE "${SRC_DIR_PATH}/libmrhab/Module/MRH_ModuleStack.cpp"
-					"${SRC_DIR_PATH}/libmrhab/Module/MRH_ModuleStack.h"
-					"${SRC_DIR_PATH}/libmrhab/Module/MRH_Module.cpp"
-					"${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/MRH_Module.h"
-					"${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/MRH_ModuleException.h")
+                    "${SRC_DIR_PATH}/libmrhab/Module/MRH_ModuleStack.h"
+                    "${SRC_DIR_PATH}/libmrhab/Module/MRH_Module.cpp"
+                    "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/MRH_Module.h"
+                    "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/MRH_ModuleException.h")
                     
 set(SRC_LIST_THREAD_POOL "${SRC_DIR_PATH}/libmrhab/ThreadPool/MRH_ThreadPool.cpp"
-					     "${SRC_DIR_PATH}/libmrhab/ThreadPool/MRH_ThreadPool.h")
+                         "${SRC_DIR_PATH}/libmrhab/ThreadPool/MRH_ThreadPool.h")
                     
 set(SRC_LIST_BASE "${SRC_DIR_PATH}/libmrhab/MRH_EventStorage.cpp"
-				  "${SRC_DIR_PATH}/libmrhab/MRH_ABRevision.cpp"
-				  "${SRC_DIR_PATH}/libmrhab.cpp"
-				  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_EventStorage.h"
-				  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_ABException.h"
-			      "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_ABRevision.h"
-				  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab.h")
+                  "${SRC_DIR_PATH}/libmrhab/MRH_ABRevision.cpp"
+                  "${SRC_DIR_PATH}/libmrhab.cpp"
+                  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_EventStorage.h"
+                  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_ABException.h"
+                  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/MRH_ABRevision.h"
+                  "${INCLUDE_DIR_PATH}/libmrhab/libmrhab.h")
 					
 ###
 #  Library Paths
@@ -95,7 +95,7 @@ set(LIB_DIR_PATH "${CMAKE_SOURCE_DIR}/lib/")
 
 set(LIB_BIN_LIST "${LIB_DIR_PATH}/libmrhcevs.a")
 set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared"
-					 "${INCLUDE_DIR_PATH}/libmrhcevs")
+                     "${INCLUDE_DIR_PATH}/libmrhcevs")
 					 
 #########################################################################
 #
@@ -113,26 +113,26 @@ add_library(libmrhab_Shared SHARED ${SRC_LIST_MODULE_TOOLS}
                                    ${SRC_LIST_THREAD_POOL}
                                    ${SRC_LIST_BASE})
 set_target_properties(libmrhab_Shared
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhab"
-					  SUFFIX ".so"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhab"
+                      SUFFIX ".so"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 					  
 add_library(libmrhab_Static STATIC ${SRC_LIST_MODULE_TOOLS}
                                    ${SRC_LIST_MODULE}
                                    ${SRC_LIST_THREAD_POOL}
                                    ${SRC_LIST_BASE})
 set_target_properties(libmrhab_Static
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhab"
-					  SUFFIX ".a"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhab"
+                      SUFFIX ".a"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 
 ###
 #  Required Libraries
