@@ -122,7 +122,7 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 
 find_package(Threads REQUIRED)
-find_library(libmrhbf NAMES mrhcevs REQUIRED)
+find_library(libmrhcevs NAMES mrhcevs REQUIRED)
 
 target_link_libraries(libmrhab_Shared PUBLIC Threads::Threads)
 target_link_libraries(libmrhab_Shared PUBLIC mrhcevs)
