@@ -58,6 +58,5 @@ Directory | Description
 --------- | -----------
 build | CMake build directory.
 doc | Documentation files.
-include | Library header files used by the library as well as the project headers.
-lib | Library files used by the project as well as the created build.
+include | The project headers.
 src | Project source code.

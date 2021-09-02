@@ -26,7 +26,7 @@
 // External
 
 // Project
-#include "../../include/libmrhab/libmrhab.h"
+#include "../include/libmrhab/libmrhab.h"
 #include "./libmrhab/Module/MRH_ModuleStack.h"
 #include "./libmrhab/ThreadPool/MRH_ThreadPool.h"
 
