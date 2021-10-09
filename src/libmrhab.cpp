@@ -197,8 +197,6 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_APP_LAUNCH_SOA_TIMER_U:
         case MRH_EVENT_APP_LAUNCH_SOA_CLEAR_U:
         case MRH_EVENT_APP_LAUNCH_SOA_CLEAR_TIMER_U:
-        case MRH_EVENT_APP_GET_DEFAULT_PACKAGE_U:
-        case MRH_EVENT_APP_SET_DEFAULT_PACKAGE_U:
         case MRH_EVENT_APP_CUSTOM_COMMAND_U:
             
         // Notification
