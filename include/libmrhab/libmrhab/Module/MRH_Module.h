@@ -84,7 +84,7 @@ public:
      *  \param p_Event The recieved event.
      */
     
-    virtual void HandleEvent(const MRH_EVBase* p_Event) noexcept;
+    virtual void HandleEvent(const MRH_Event* p_Event) noexcept;
     
     /**
      *  Perform a module update.

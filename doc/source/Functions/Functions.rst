@@ -46,8 +46,7 @@ Library Functions
   libmrhab_Directory/MRH_EventStorage/~MRH_EventStorage
   libmrhab_Directory/MRH_EventStorage/Singleton
   libmrhab_Directory/MRH_EventStorage/Clear
-  libmrhab_Directory/MRH_EventStorage/Add_0
-  libmrhab_Directory/MRH_EventStorage/Add_1
+  libmrhab_Directory/MRH_EventStorage/Add
   libmrhab_Directory/MRH_EventStorage/RemoveFront
   libmrhab_Directory/MRH_EventStorage/GetCount
   libmrhab_Directory/MRH_EventStorage/GetEvent_0

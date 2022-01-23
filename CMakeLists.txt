@@ -122,10 +122,10 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 
 find_package(Threads REQUIRED)
-find_library(libmrhcevs NAMES mrhcevs REQUIRED)
+find_library(libmrhevdata NAMES mrhevdata REQUIRED)
 
 target_link_libraries(libmrhab_Shared PUBLIC Threads::Threads)
-target_link_libraries(libmrhab_Shared PUBLIC mrhcevs)
+target_link_libraries(libmrhab_Shared PUBLIC mrhevdata)
 
 ###
 #  Source Definitions
@@ -133,7 +133,7 @@ target_link_libraries(libmrhab_Shared PUBLIC mrhcevs)
 #  Preprocessor source definitions.
 ###
 target_compile_definitions(libmrhab_Shared PRIVATE MRH_EVENT_STORAGE_RESERVE_STEP=100)
-target_compile_definitions(libmrhab_Shared PRIVATE LOGGER_PRINT_CLI=0)
+target_compile_definitions(libmrhab_Shared PRIVATE LOGGER_PRINT_CLI=1)
 
 ###
 #  Install

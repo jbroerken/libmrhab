@@ -29,7 +29,7 @@
 #include <vector>
 
 // External
-#include <libmrhcevs.h>
+#include <MRH_Event.h>
 
 // Project
 #include "./MRH_ABException.h"
@@ -64,14 +64,6 @@ public:
     //*************************************************************************************
     // Add
     //*************************************************************************************
-    
-    /**
-     *  Add a event to storage. This function is thread safe.
-     *
-     *  \param c_Event The event to add.
-     */
-    
-    void Add(MRH_EVBase const& c_Event);
     
     /**
      *  Add a event to storage. This function is thread safe.

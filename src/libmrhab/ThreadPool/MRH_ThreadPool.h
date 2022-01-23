@@ -82,7 +82,7 @@ public:
      *  \param p_Module The module meant to process the user event.
      */
     
-    void AddJob(MRH_EVBase*& p_Event, std::shared_ptr<MRH_Module> p_Module);
+    void AddJob(const MRH_Event* p_Event, std::shared_ptr<MRH_Module> p_Module);
     
 private:
     
@@ -90,7 +90,7 @@ private:
     // Types
     //*************************************************************************************
     
-    typedef std::list<std::pair<MRH_EVBase*, std::shared_ptr<MRH_Module>>> JobList;
+    typedef std::list<std::pair<MRH_Event*, std::shared_ptr<MRH_Module>>> JobList;
     
     //*************************************************************************************
     // Update

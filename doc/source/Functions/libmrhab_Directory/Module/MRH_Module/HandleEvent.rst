@@ -16,7 +16,7 @@ Syntax
 ------
 .. code-block:: c
 
-    virtual void HandleEvent(const MRH_EVBase* p_Event) noexcept;
+    virtual void HandleEvent(const MRH_Event* p_Event) noexcept;
 
 
 Parameters

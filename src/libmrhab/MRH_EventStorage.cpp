@@ -81,26 +81,6 @@ void MRH_EventStorage::Clear() noexcept
 // Add
 //*************************************************************************************
 
-void MRH_EventStorage::Add(MRH_EVBase const& c_Event)
-{
-    MRH_Event* p_Event;
-    
-    try
-    {
-        p_Event = c_Event.Build();
-        Add(p_Event);
-    }
-    catch (MRH_CEVSException& e)
-    {
-        throw MRH_ABException("CEVS Issue: " + e.what2());
-    }
-    catch (MRH_ABException& e)
-    {
-        delete p_Event;
-        throw;
-    }
-}
-
 void MRH_EventStorage::Add(MRH_Event* p_Event)
 {
     std::lock_guard<std::mutex> c_Guard(c_Mutex);

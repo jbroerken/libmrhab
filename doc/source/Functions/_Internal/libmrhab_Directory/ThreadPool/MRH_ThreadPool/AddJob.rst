@@ -15,7 +15,8 @@ Syntax
 ------
 .. code-block:: c
 
-    void AddJob(MRH_EVBase*& p_Event);
+    void AddJob(const MRH_Event* p_Event,
+                std::shared_ptr<MRH_Module> p_Module);
 
 
 Parameters
@@ -27,6 +28,8 @@ Parameters
       - Description
     * - p_Event
       - The event to add as a job.
+    * - p_Module
+      - The module which will recieve the event job.
 
 
 Return Value
@@ -35,7 +38,7 @@ None.
 
 Remarks
 -------
-* The given event is consumed.
+* The given event is copied.
 
 Code Examples
 -------------

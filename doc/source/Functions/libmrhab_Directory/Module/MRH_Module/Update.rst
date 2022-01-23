@@ -20,14 +20,7 @@ Syntax
 
 Parameters
 ----------
-.. list-table::
-    :header-rows: 1
-
-    * - Parameter
-      - Description
-    * - p_Event
-      - The recieved event.
-
+None.
 
 Return Value
 ------------

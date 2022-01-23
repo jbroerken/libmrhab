@@ -95,32 +95,20 @@ void libmrhab::AddJob(const MRH_Event* p_Event)
         return;
     }
     
-    MRH_EVBase* p_Job;
-    
     try
     {
-        // Create a shared event here, given event is returned to parent
-        p_Job = libmrhcevs::Create(p_Event);
-        
         // Handle by thread pool or single threaded
         if (p_ThreadPool != NULL)
         {
-            p_ThreadPool->AddJob(p_Job, p_Module);
+            p_ThreadPool->AddJob(p_Event, p_Module);
         }
         else
         {
-            p_Module->HandleEvent(p_Job);
-            delete p_Job; // We need to delete the job ourselfs here
+            p_Module->HandleEvent(p_Event);
         }
-    }
-    catch (MRH_CEVSException& e)
-    {
-        // No job deletion since thats what failed
-        throw MRH_ABException("CEVS Issue: " + e.what2());
     }
     catch (MRH_ABException& e)
     {
-        delete p_Job;
         throw;
     }
 }

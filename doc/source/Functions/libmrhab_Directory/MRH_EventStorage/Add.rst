@@ -1,5 +1,5 @@
-Add (Class Event)
-=================
+Add
+===
 The Add function is used to add an event to the storage container.
 
 Header
@@ -15,7 +15,7 @@ Syntax
 ------
 .. code-block:: c
 
-    void Add(MRH_EVBase const& c_Event) noexcept;
+    void Add(MRH_Event* p_Event) noexcept;
 
 
 Parameters
@@ -25,7 +25,7 @@ Parameters
 
     * - Parameter
       - Description
-    * - c_Event
+    * - p_Event
       - The event to add.
 
 
@@ -36,7 +36,7 @@ None.
 Remarks
 -------
 * This function is thread safe.
-* The given event will be used to construct a C-style event.
+* The given event will be added without copying.
 
 Code Examples
 -------------

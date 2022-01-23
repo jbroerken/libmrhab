@@ -48,7 +48,7 @@ MRH_Module::~MRH_Module() noexcept
 // Update
 //*************************************************************************************
 
-void MRH_Module::HandleEvent(const MRH_EVBase* p_Event) noexcept
+void MRH_Module::HandleEvent(const MRH_Event* p_Event) noexcept
 {
     // Dummy
 }

@@ -25,6 +25,7 @@
 #include <string>
 
 // External
+#include <libmrhevdata.h>
 
 // Project
 #include "./MRH_ThreadPool.h"
@@ -70,15 +71,20 @@ MRH_ThreadPool::~MRH_ThreadPool() noexcept
 // Add
 //*************************************************************************************
 
-void MRH_ThreadPool::AddJob(MRH_EVBase*& p_Event, std::shared_ptr<MRH_Module> p_Module)
+void MRH_ThreadPool::AddJob(const MRH_Event* p_Event, std::shared_ptr<MRH_Module> p_Module)
 {
+    MRH_Event* p_Job = MRH_EVD_CopyEvent(p_Event);
+    
+    if (p_Job == NULL)
+    {
+        throw MRH_ABException("Failed to copy event for job!");
+    }
+    
     try
     {
         c_JobMutex.lock();
-        l_Job.emplace_back(std::make_pair(p_Event, p_Module));
+        l_Job.emplace_back(std::make_pair(p_Job, p_Module));
         c_JobMutex.unlock();
-        
-        p_Event = NULL;
         
         c_Condition.notify_one();
     }
@@ -96,7 +102,7 @@ void MRH_ThreadPool::Update(MRH_ThreadPool* p_Instance) noexcept
 {
     JobList& l_Job = p_Instance->l_Job;
     
-    MRH_EVBase* p_Event;
+    MRH_Event* p_Event;
     std::shared_ptr<MRH_Module> p_Module;
     
     while (p_Instance->b_Update == true)
@@ -126,6 +132,6 @@ void MRH_ThreadPool::Update(MRH_ThreadPool* p_Instance) noexcept
         p_Module->HandleEvent(p_Event);
         
         // Event has been processed, clean up
-        delete p_Event;
+        MRH_EVD_DestroyEvent(p_Event);
     }
 }
