@@ -133,7 +133,7 @@ target_link_libraries(libmrhab_Shared PUBLIC mrhevdata)
 #  Preprocessor source definitions.
 ###
 target_compile_definitions(libmrhab_Shared PRIVATE MRH_EVENT_STORAGE_RESERVE_STEP=100)
-target_compile_definitions(libmrhab_Shared PRIVATE LOGGER_PRINT_CLI=1)
+target_compile_definitions(libmrhab_Shared PRIVATE LOGGER_PRINT_CLI=0)
 
 ###
 #  Install
