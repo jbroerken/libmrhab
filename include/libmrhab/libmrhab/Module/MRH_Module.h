@@ -28,19 +28,13 @@
 #include <memory>
 
 // External
+#include <libmrhevdata.h>
 
 // Project
 #include "./Tools/MRH_ModuleLogger.h"
 #include "./Tools/MRH_ModuleTimer.h"
 #include "../MRH_EventStorage.h"
 #include "./MRH_ModuleException.h"
-
-// Pre-defined
-#ifdef DEBUG
-    #define event_cast dynamic_cast
-#else
-    #define event_cast static_cast
-#endif
 
 
 class MRH_Module
