@@ -157,6 +157,7 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_SAY_AVAIL_U:
         case MRH_EVENT_SAY_STRING_U:
         case MRH_EVENT_SAY_GET_METHOD_U:
+        case MRH_EVENT_SAY_REMOTE_NOTIFICATION_U:
         case MRH_EVENT_SAY_CUSTOM_COMMAND_U:
             
         // Password
