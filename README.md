@@ -26,7 +26,7 @@ This project requires other libraries and headers to function:
 
 Dependency | Source
 ---------- | ------
-libmrhcevs | https://github.com/jbroerken/libmrhcevs/
+libmrhevdata | https://github.com/jbroerken/libmrhevdata/
 mrhshared | https://github.com/jbroerken/mrhshared/
 
 For more information about the requirements, check the "Building" section found in the documentation.
