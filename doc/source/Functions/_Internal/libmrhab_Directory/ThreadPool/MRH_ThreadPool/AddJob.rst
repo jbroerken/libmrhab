@@ -1,6 +1,6 @@
 AddJob
 ======
-The AddJob function is used to add a event to the job list.
+The AddJob function is used to add a event with a module to the job list.
 
 Header
 ------
@@ -16,7 +16,7 @@ Syntax
 .. code-block:: c
 
     void AddJob(const MRH_Event* p_Event,
-                std::shared_ptr<MRH_Module> p_Module);
+                std::shared_ptr<MRH_Module>& p_Module);
 
 
 Parameters

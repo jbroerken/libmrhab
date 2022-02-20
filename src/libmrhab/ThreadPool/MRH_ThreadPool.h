@@ -29,9 +29,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
-#include <unordered_map>
-#include <list>
-#include <utility>
+#include <deque>
 #include <memory>
 
 // External
@@ -82,7 +80,17 @@ public:
      *  \param p_Module The module meant to process the user event.
      */
     
-    void AddJob(const MRH_Event* p_Event, std::shared_ptr<MRH_Module> p_Module);
+    void AddJob(const MRH_Event* p_Event, std::shared_ptr<MRH_Module>& p_Module);
+    
+    //*************************************************************************************
+    // Wait
+    //*************************************************************************************
+    
+    /**
+     *  Start and wait for all thread pool jobs. This function is thread safe.
+     */
+    
+    void PerformJobs() noexcept;
     
 private:
     
@@ -90,7 +98,47 @@ private:
     // Types
     //*************************************************************************************
     
-    typedef std::list<std::pair<MRH_Event*, std::shared_ptr<MRH_Module>>> JobList;
+    struct Job
+    {
+    public:
+        
+        //*************************************************************************************
+        // Constructor / Destructor
+        //*************************************************************************************
+        
+        /**
+         *  Default constructor.
+         *
+         *  \param p_Event The event job to add.
+         *  \param p_Module The module performing the event job.
+         */
+        
+        Job(MRH_Event* p_Event,
+            std::shared_ptr<MRH_Module>& p_Module) noexcept;
+        
+        /**
+         *  Copy constructor. Disabled for this class.
+         *
+         *  \param c_Job Job class source.
+         */
+        
+        Job(Job const& c_Job) = delete;
+        
+        /**
+         *  Default destructor.
+         */
+        
+        ~Job() noexcept;
+        
+        //*************************************************************************************
+        // Data
+        //*************************************************************************************
+        
+        std::mutex c_Mutex;
+        
+        MRH_Event* p_Event;
+        std::shared_ptr<MRH_Module> p_Module;
+    };
     
     //*************************************************************************************
     // Update
@@ -109,14 +157,19 @@ private:
     //*************************************************************************************
     
     // Thread
-    std::list<std::thread> l_Thread;
+    std::deque<std::thread> dq_Thread;
     std::atomic<bool> b_Update;
-    std::mutex c_ConditionMutex;
-    std::mutex c_JobMutex;
-    std::condition_variable c_Condition;
     
     // Job List
-    JobList l_Job;
+    std::mutex c_JobMutex;
+    std::condition_variable c_JobCondition;
+    std::deque<Job> dq_Job;
+    std::atomic<size_t> us_TotalCount;
+    std::atomic<size_t> us_AvailableCount;
+    
+    // Wait
+    std::mutex c_WaitMutex;
+    std::condition_variable c_WaitCondition;
     
 protected:
 

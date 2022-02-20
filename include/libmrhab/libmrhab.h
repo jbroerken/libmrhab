@@ -30,7 +30,7 @@
 // External
 
 // Project
-#include "./libmrhab/Module/MRH_Module.h"
+#include "./libmrhab/Module/Common/MRH_CommonModule.h"
 #include "./libmrhab/MRH_ABException.h"
 #include "./libmrhab/MRH_ABRevision.h"
 

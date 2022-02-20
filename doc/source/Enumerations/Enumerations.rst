@@ -15,6 +15,8 @@ Library Enumerations
   :maxdepth: 1
 
   libmrhab_Directory/Module/MRH_Module/Result
+  libmrhab_Directory/Module/Common/MRH_CheckServiceModule/Service
+  libmrhab_Directory/Module/Common/MRH_CheckServiceModule/Result
 
 Internal Enumerations
 ---------------------

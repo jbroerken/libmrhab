@@ -14,7 +14,6 @@ Library Macros
   libmrhab/LIBMRHAB_UPDATE_RESULT
   libmrhab/LIBMRHAB_UPDATE_CLOSE_APP
   libmrhab/LIBMRHAB_UPDATE_CONTINUE
-  libmrhab_Directory/Module/MRH_Module/event_cast
   libmrhab_Directory/MRH_ABRevision/MRH_APP_BASE_LIB_VERSION_MAJOR
   libmrhab_Directory/MRH_ABRevision/MRH_APP_BASE_LIB_VERSION_MINOR
   libmrhab_Directory/MRH_ABRevision/MRH_APP_BASE_LIB_VERSION_PATCH

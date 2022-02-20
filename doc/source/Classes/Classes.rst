@@ -17,6 +17,9 @@ Library Classes
   libmrhab_Directory/Module/MRH_ModuleException
   libmrhab_Directory/Module/Tools/MRH_ModuleLogger
   libmrhab_Directory/Module/Tools/MRH_ModuleTimer
+  libmrhab_Directory/Module/Common/MRH_CheckServiceModule
+  libmrhab_Directory/Module/Common/MRH_SpeechInputModule
+  libmrhab_Directory/Module/Common/MRH_SpeechOutputModule
   libmrhab_Directory/MRH_EventStorage
   libmrhab_Directory/MRH_ABException
 

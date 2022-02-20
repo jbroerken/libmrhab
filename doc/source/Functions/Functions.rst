@@ -42,6 +42,12 @@ Library Functions
   libmrhab_Directory/Module/Tools/MRH_ModuleTimer/SetTimer
   libmrhab_Directory/Module/Tools/MRH_ModuleTimer/GetTimerFinished
   libmrhab_Directory/Module/Tools/MRH_ModuleTimer/GetTimerSet
+  libmrhab_Directory/Module/Common/MRH_CheckServiceModule/MRH_CheckServiceModule_0
+  libmrhab_Directory/Module/Common/MRH_CheckServiceModule/~MRH_CheckServiceModule
+  libmrhab_Directory/Module/Common/MRH_SpeechInputModule/MRH_CheckServiceModule_0
+  libmrhab_Directory/Module/Common/MRH_SpeechInputModule/~MRH_CheckServiceModule
+  libmrhab_Directory/Module/Common/MRH_SpeechOutputModule/MRH_SpeechOutputModule_0
+  libmrhab_Directory/Module/Common/MRH_SpeechOutputModule/~MRH_SpeechOutputModule
   libmrhab_Directory/MRH_EventStorage/MRH_EventStorage_0
   libmrhab_Directory/MRH_EventStorage/~MRH_EventStorage
   libmrhab_Directory/MRH_EventStorage/Singleton
@@ -72,4 +78,5 @@ Internal Functions
   _Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/MRH_ThreadPool_0
   _Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/~MRH_ThreadPool
   _Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/AddJob
+  _Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/PerformJobs
   _Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/Update

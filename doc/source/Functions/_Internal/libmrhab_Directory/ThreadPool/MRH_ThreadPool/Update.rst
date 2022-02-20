@@ -1,7 +1,7 @@
 Update
 ======
 The Update function is run by each thread in the thread pool to 
-hand jobs to the known callbacks.
+hand jobs to their modules.
 
 Header
 ------

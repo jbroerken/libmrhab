@@ -61,8 +61,8 @@ public:
      */
     
     MRH_ModuleException(const char* p_Module,
-                        const char* p_Message) : s_Module(p_Module),
-                                                 s_Message(p_Message)
+                        const char* p_Message) : s_Module(p_Module != NULL ? p_Module : ""),
+                                                 s_Message(p_Message != NULL ? p_Message : "")
     {}
     
     /**

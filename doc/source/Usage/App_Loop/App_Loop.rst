@@ -128,7 +128,8 @@ to ensure that all updates happen on the main thread.
 The library will use the 
 :doc:`../../Functions/libmrhab_Directory/Module/MRH_Module/Update` 
 function of the current module to perform the module update when calling 
-the :doc:`../../Functions/libmrhab/Update` function. This function will also 
+the :doc:`../../Functions/libmrhab/Update` function. The update will be 
+performed once all thread jobs have been completed. This function will also 
 return information about wether the application should close or continue.
 
 Events which are generated inside modules should be stored in the 

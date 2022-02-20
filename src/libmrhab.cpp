@@ -117,6 +117,13 @@ LIBMRHAB_UPDATE_RESULT libmrhab::Update()
 {
     try
     {
+        // Run jobs with thread pool
+        if (p_ThreadPool != NULL)
+        {
+            p_ThreadPool->PerformJobs();
+        }
+        
+        // All jobs performed, now run update
         if (p_ModuleStack->UpdateCurrent() == MRH_MODULESTACK_CLOSE_APP)
         {
             return LIBMRHAB_UPDATE_CLOSE_APP;
@@ -138,7 +145,9 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
 {
     switch (u32_Type)
     {
-        /* Event Version 1 */
+        /**
+         *  Event Version 1
+         */
             
         // System
         case MRH_EVENT_UNK:
@@ -146,6 +155,7 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_PS_RESET_ACKNOLEDGED_U:
             
         // Custom
+        case MRH_EVENT_CUSTOM_AVAIL_U:
         case MRH_EVENT_CUSTOM_CUSTOM_COMMAND_U:
             
         // Listen
@@ -197,6 +207,10 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_NOTIFICATION_GET_NEXT_U:
         case MRH_EVENT_NOTIFICATION_CUSTOM_COMMAND_U:
             return false;
+            
+        /**
+         *  Allowed (All)
+         */
             
         // Allowed Service
         default:

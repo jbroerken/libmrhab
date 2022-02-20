@@ -56,7 +56,7 @@ public:
      *  \param p_Message The error message.
      */
     
-    MRH_ABException(const char* p_Message) : s_Message(p_Message)
+    MRH_ABException(const char* p_Message) : s_Message(p_Message != NULL ? p_Message : "")
     {}
     
     /**

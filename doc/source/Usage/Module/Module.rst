@@ -61,10 +61,7 @@ the event type id and expects an answer if the event should be recieved.
 Both the module and the event will be added to the callback thread pool 
 if the event can be handled. This will then cause the module function 
 :doc:`../../Functions/libmrhab_Directory/Module/MRH_Module/HandleEvent` 
-to be called once the thread pool is able to perform the callback.
-
-**A Module might already be switched when the callback occurs if the 
-callbacks before it took a long time.**
+to be called once the thread pool is asked to perform all current callbacks.
 
 .. code-block:: c
 
@@ -116,7 +113,7 @@ module, etc.).
 Switching Modules
 -----------------
 Every MRH application using modules can switch to other modules in either a 
-sequential fashion oder by completely replacing the module with a different one.
+sequential style or by completely replacing the module with a different one.
 The behaviour is decided by the :doc:`../../Enumerations/libmrhab_Directory/Module/MRH_Module/Result` 
 returned by the :doc:`../../Functions/libmrhab_Directory/Module/MRH_Module/Update` 
 function.
@@ -125,7 +122,7 @@ function.
    :align: center
    
    
-Appending modules allows the application to create a path deep inside the application. 
+Appending modules allows the application to create a path inside the application. 
 This method should be used if a application wants to mirror behaviour like the app 
 flow found in smartphone applications with views (think SwiftUI navigation views).
 

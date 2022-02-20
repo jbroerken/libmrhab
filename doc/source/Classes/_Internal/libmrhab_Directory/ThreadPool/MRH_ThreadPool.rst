@@ -26,6 +26,8 @@ Functions
       - Public
     * - :doc:`../../../../Functions/_Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/AddJob`
       - Public
+    * - :doc:`../../../../Functions/_Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/PerformJobs`
+      - Public
     * - :doc:`../../../../Functions/_Internal/libmrhab_Directory/ThreadPool/MRH_ThreadPool/Update`
       - Private
 
@@ -51,29 +53,41 @@ Variables
       - Type
       - Description
       - Visbility
-    * - l_Thread
-      - std::list<std::thread>
+    * - dq_Thread
+      - std::dque<std::thread>
       - The active thread pool threads.
       - Private
     * - b_Update
       - std::atomic<bool>
       - The thread run control flag.
       - Private
-    * - c_ConditionMutex
-      - std::mutex
-      - The mutex lock for the thread wait condition.
-      - Private
     * - c_JobMutex
       - std::mutex
       - The mutex lock for the job list.
       - Private
-    * - c_Condition
+    * - c_JobCondition
       - std::condition_variable
-      - The thread wait condition.
+      - The thread wait condition for the job list.
       - Private
-    * - l_Job
-      - std::list<MRH_EVBase*>
+    * - dq_Job
+      - std::deque<Job>
       - The jobs waiting to be performed by the threads.
+      - Private
+	* - us_TotalCount
+	  - std::atomic<size_t>
+	  - The total count of job list slots.
+	  - Private
+	* - us_AvailableCount
+	  - std::atomic<size_t>
+	  - The amount of jobs available to perform.
+	  - Private
+    * - c_WaitMutex
+      - std::mutex
+      - The mutex lock for the thread starting jobs.
+      - Private
+    * - c_WaitCondition
+      - std::condition_variable
+      - The thread wait condition for the thread starting jobs.
       - Private
 
 
