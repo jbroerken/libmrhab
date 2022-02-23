@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'libmrhab'
-copyright = '2021, Jens Broerken'
+copyright = '2021 - 2022, Jens Broerken'
 author = 'Jens Broerken'
 
 # The full version, including alpha/beta/rc tags
