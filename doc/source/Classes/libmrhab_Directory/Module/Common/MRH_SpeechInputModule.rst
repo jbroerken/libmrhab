@@ -69,18 +69,6 @@ Variables
 	  - std::mutex
 	  - Recieved event thread lock.
 	  - Private
-	* - m_Part
-	  - std::map<MRH_Uint32, std::string>
-	  - The recieved string parts.
-	  - Private
-	* - u32_StringID
-	  - MRH_Uint32
-	  - The id for the recieved string.
-	  - Private
-	* - u32_EndPart
-	  - MRH_Uint32
-	  - The part id for the last string part.
-	  - Private
 	* - s_Input
 	  - std::string&
 	  - The input to set with recieved string parts.

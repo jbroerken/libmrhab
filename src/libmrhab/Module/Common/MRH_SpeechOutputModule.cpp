@@ -46,67 +46,35 @@ MRH_SpeechOutputModule::MRH_SpeechOutputModule(std::string s_Output,
                                                                 std::to_string(u32_SentOutputID) +
                                                                 ")",
                                       "MRH_SpeechOutputModule.cpp", __LINE__);
-    
-    MRH_EventStorage& c_Storage = MRH_EventStorage::Singleton();
-    MRH_Event* p_Event = NULL;
+    // Setup event data
     MRH_EvD_S_String_U c_Data;
     
-    // ID never changes, part get incremented
+    memset((c_Data.p_String), '\0', MRH_EVD_S_STRING_BUFFER_MAX_TERMINATED);
+    strncpy(c_Data.p_String, s_Output.c_str(), MRH_EVD_S_STRING_BUFFER_MAX);
     c_Data.u32_ID = u32_SentOutputID;
-    c_Data.u32_Part = 0;
     
-    while (s_Output.size() > 0)
+    // Create event
+    MRH_Event* p_Event = MRH_EVD_CreateSetEvent(MRH_EVENT_SAY_STRING_U, &c_Data);
+    
+    if (p_Event == NULL)
     {
-        // Reset last
-        memset((c_Data.p_String), '\0', MRH_EVD_S_STRING_BUFFER_MAX_TERMINATED);
-        
-        // Define string type and copy
-        if (s_Output.size() <= MRH_EVD_S_STRING_BUFFER_MAX)
-        {
-            strncpy(c_Data.p_String, s_Output.c_str(), s_Output.size());
-            s_Output.clear();
-            
-            c_Data.u8_Type = MRH_EVD_L_STRING_END;
-        }
-        else
-        {
-            strncpy(c_Data.p_String, s_Output.c_str(), MRH_EVD_S_STRING_BUFFER_MAX);
-            s_Output.erase(0, MRH_EVD_S_STRING_BUFFER_MAX);
-            
-            c_Data.u8_Type = MRH_EVD_L_STRING_UNFINISHED;
-        }
-        
-        // Create next event
-        if (p_Event == NULL && (p_Event = MRH_EVD_CreateEvent(MRH_EVENT_SAY_STRING_U, NULL, 0)) == NULL)
-        {
-            throw MRH_ModuleException("MRH_SpeechOutputModule", 
-                                      "Failed to allocate new output event!");
-        }
-        else if (MRH_EVD_SetEvent(p_Event, MRH_EVENT_SAY_STRING_U, &c_Data) < 0)
-        {
-            MRH_EVD_DestroyEvent(p_Event);
-            throw MRH_ModuleException("MRH_SpeechOutputModule", 
-                                      "Failed to set output event!");
-        }
-        
-        // Attempt to add to out storage
-        try
-        {
-            c_Storage.Add(p_Event);
-            p_Event = NULL;
-        }
-        catch (MRH_ABException& e)
-        {
-            MRH_EVD_DestroyEvent(p_Event);
-            throw MRH_ModuleException("MRH_SpeechOutputModule", 
-                                      "Failed to send output: " + e.what2());
-        }
-        
-        // Part added, identify next part
-        c_Data.u32_Part += 1;
+        throw MRH_ModuleException("MRH_SpeechOutputModule", 
+                                  "Failed to create output event!");
     }
     
-    // All sent, start timer and wait
+    // Attempt to add to out storage
+    try
+    {
+        MRH_EventStorage::Singleton().Add(p_Event);
+    }
+    catch (MRH_ABException& e)
+    {
+        MRH_EVD_DestroyEvent(p_Event);
+        throw MRH_ModuleException("MRH_SpeechOutputModule", 
+                                  "Failed to send output: " + e.what2());
+    }
+    
+    // Start timer and wait
     c_Timer.SetTimer(u32_TimeoutMS);
 }
 

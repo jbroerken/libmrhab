@@ -36,8 +36,6 @@
 MRH_SpeechInputModule::MRH_SpeechInputModule(std::string& s_Input,
                                              MRH_Uint32 u32_TimeoutMS) noexcept : MRH_Module("MRH_SpeechInputModule"),
                                                                                   c_Timer(),
-                                                                                  u32_StringID(0),
-                                                                                  u32_EndPart(((MRH_Uint32) - 1)),
                                                                                   s_Input(s_Input)
 {
     this->s_Input = "";
@@ -63,30 +61,11 @@ void MRH_SpeechInputModule::HandleEvent(const MRH_Event* p_Event) noexcept
         return;
     }
     
-    // We need a lock here, editing multiple vars and map
-    std::lock_guard<std::mutex> c_Guard(c_Mutex);
-    
-    // String id change? reset input
-    if (u32_StringID != c_String.u32_ID)
+    if (strnlen(c_String.p_String, MRH_EVD_L_STRING_BUFFER_MAX_TERMINATED) > 0)
     {
-        MRH_ModuleLogger::Singleton().Log("MRH_SpeechInputModule", "Recieved new input with ID: " +
-                                                                   std::to_string(c_String.u32_ID) +
-                                                                   ", resetting input.",
-                                          "MRH_SpeechInputModule.cpp", __LINE__);
+        std::lock_guard<std::mutex> c_Guard(c_Mutex);
         
-        m_Part.clear();
-        u32_StringID = c_String.u32_ID;
-        u32_EndPart = ((MRH_Uint32) - 1);
-    }
-    
-    // Add part
-    m_Part.insert(std::make_pair(c_String.u32_Part, 
-                                 c_String.p_String));
-    
-    // Set end if provided
-    if (c_String.u8_Type == MRH_EVD_L_STRING_END)
-    {
-        u32_EndPart = c_String.u32_Part;
+        s_Input = c_String.p_String;
     }
 }
 
@@ -96,29 +75,17 @@ MRH_Module::Result MRH_SpeechInputModule::Update()
     {
         return MRH_Module::FINISHED_POP;
     }
-    
-    // Still assembling?
-    if (m_Part.size() <= u32_EndPart) // <=, size - 1 = endpart
+    else
     {
-        return MRH_Module::IN_PROGRESS;
-    }
-    
-    // Finished, assemble string
-    MRH_Uint32 u32_NextPart = 0;
-    
-    for (auto& Part : m_Part)
-    {
-        if (Part.first != u32_NextPart)
-        {
-            s_Input = "";
-            return MRH_Module::IN_PROGRESS;
-        }
+        std::lock_guard<std::mutex> c_Guard(c_Mutex);
         
-        s_Input += Part.second;
-        ++u32_NextPart;
+        if (s_Input.size() > 0)
+        {
+            return MRH_Module::FINISHED_POP;
+        }
     }
     
-    return MRH_Module::FINISHED_POP;
+    return MRH_Module::IN_PROGRESS;
 }
 
 std::shared_ptr<MRH_Module> MRH_SpeechInputModule::NextModule()

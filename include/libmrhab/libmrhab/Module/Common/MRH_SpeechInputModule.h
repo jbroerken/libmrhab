@@ -109,9 +109,6 @@ private:
     MRH_ModuleTimer c_Timer;
     
     std::mutex c_Mutex;
-    std::map<MRH_Uint32, std::string> m_Part;
-    MRH_Uint32 u32_StringID;
-    MRH_Uint32 u32_EndPart;
 
     std::string& s_Input;
     
