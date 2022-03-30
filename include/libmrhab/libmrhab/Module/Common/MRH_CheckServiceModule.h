@@ -48,9 +48,8 @@ public:
         PASSWORD = 2,
         USER = 3,
         APPLICATION = 4,
-        NOTIFICATION = 5,
         
-        SERVICE_MAX = NOTIFICATION,
+        SERVICE_MAX = APPLICATION,
         
         SERVICE_COUNT = SERVICE_MAX + 1
     };

@@ -25,9 +25,8 @@ The defined enumeration values are as follows:
         PASSWORD = 2,
         USER = 3,
         APPLICATION = 4,
-        NOTIFICATION = 5,
         
-        SERVICE_MAX = NOTIFICATION,
+        SERVICE_MAX = APPLICATION,
         
         SERVICE_COUNT = SERVICE_MAX + 1
     };
@@ -52,8 +51,6 @@ The meaning behind the enumeration values is as follows:
       - User platform service.
     * - APPLICATION
       - Application platform service.
-    * - NOTIFICATION
-      - Notification platform service.
     * - SERVICE_MAX
       - The highest value in this enumeration.
     * - SERVICE_COUNT

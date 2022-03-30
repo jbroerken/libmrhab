@@ -62,9 +62,6 @@ MRH_CheckServiceModule::MRH_CheckServiceModule(Service e_Service,
         case APPLICATION:
             c_Storage.Add(MRH_EVD_CreateEvent(MRH_EVENT_APP_AVAIL_U, NULL, 0));
             break;
-        case NOTIFICATION:
-            c_Storage.Add(MRH_EVD_CreateEvent(MRH_EVENT_NOTIFICATION_AVAIL_U, NULL, 0));
-            break;
             
         default:
             throw MRH_ModuleException("MRH_CheckServiceModule", 
@@ -124,12 +121,6 @@ void MRH_CheckServiceModule::HandleEvent(const MRH_Event* p_Event) noexcept
                 return;
             }
             break;
-        case MRH_EVENT_NOTIFICATION_AVAIL_S:
-            if (e_Service != NOTIFICATION)
-            {
-                return;
-            }
-            break;
             
         default:
             return;
@@ -175,7 +166,6 @@ bool MRH_CheckServiceModule::CanHandleEvent(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_PASSWORD_AVAIL_S:
         case MRH_EVENT_USER_AVAIL_S:
         case MRH_EVENT_APP_AVAIL_S:
-        case MRH_EVENT_NOTIFICATION_AVAIL_S:
             return true;
             
         default:

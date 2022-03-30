@@ -167,7 +167,8 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_SAY_AVAIL_U:
         case MRH_EVENT_SAY_STRING_U:
         case MRH_EVENT_SAY_GET_METHOD_U:
-        case MRH_EVENT_SAY_REMOTE_NOTIFICATION_U:
+        case MRH_EVENT_SAY_NOTIFICATION_APP_U:
+        case MRH_EVENT_SAY_NOTIFICATION_SERVICE_U:
         case MRH_EVENT_SAY_CUSTOM_COMMAND_U:
             
         // Password
@@ -197,15 +198,6 @@ bool libmrhab::IsValidEventType(MRH_Uint32 u32_Type) noexcept
         case MRH_EVENT_APP_LAUNCH_SOA_CLEAR_U:
         case MRH_EVENT_APP_LAUNCH_SOA_CLEAR_TIMER_U:
         case MRH_EVENT_APP_CUSTOM_COMMAND_U:
-            
-        // Notification
-        case MRH_EVENT_NOTIFICATION_AVAIL_U:
-        case MRH_EVENT_NOTIFICATION_CREATE_APP_U:
-        case MRH_EVENT_NOTIFICATION_CREATE_SERVICE_U:
-        case MRH_EVENT_NOTIFICATION_DESTROY_APP_U:
-        case MRH_EVENT_NOTIFICATION_GET_WAITING_U:
-        case MRH_EVENT_NOTIFICATION_GET_NEXT_U:
-        case MRH_EVENT_NOTIFICATION_CUSTOM_COMMAND_U:
             return false;
             
         /**
