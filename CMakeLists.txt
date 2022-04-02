@@ -61,13 +61,6 @@ file(MAKE_DIRECTORY ${BUILD_DIR_PATH})
 set(SRC_DIR_PATH "${CMAKE_SOURCE_DIR}/src/")
 set(INCLUDE_DIR_PATH "${CMAKE_SOURCE_DIR}/include/")
 
-set(SRC_LIST_COMMON_MODULE "${SRC_DIR_PATH}/libmrhab/Module/Common/MRH_CheckServiceModule.cpp"
-                           "${SRC_DIR_PATH}/libmrhab/Module/Common/MRH_SpeechInputModule.cpp"
-                           "${SRC_DIR_PATH}/libmrhab/Module/Common/MRH_SpeechOutputModule.cpp"
-                           "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Common/MRH_CheckServiceModule.h"
-                           "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Common/MRH_SpeechInputModule.h"
-                           "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Common/MRH_SpeechOutputModule.h")
-						  
 set(SRC_LIST_MODULE_TOOLS "${SRC_DIR_PATH}/libmrhab/Module/Tools/MRH_ModuleLogger.cpp"
                           "${SRC_DIR_PATH}/libmrhab/Module/Tools/MRH_ModuleTimer.cpp"
                           "${INCLUDE_DIR_PATH}/libmrhab/libmrhab/Module/Tools/MRH_ModuleLogger.h"
@@ -108,8 +101,7 @@ set(PUBLIC_API_DIR_PATH "${INCLUDE_DIR_PATH}/libmrhab")
 #  ------
 #  The target(s) to build.
 ###
-add_library(libmrhab_Shared SHARED ${SRC_LIST_COMMON_MODULE}
-								   ${SRC_LIST_MODULE_TOOLS}
+add_library(libmrhab_Shared SHARED ${SRC_LIST_MODULE_TOOLS}
                                    ${SRC_LIST_MODULE}
                                    ${SRC_LIST_THREAD_POOL}
                                    ${SRC_LIST_BASE})
