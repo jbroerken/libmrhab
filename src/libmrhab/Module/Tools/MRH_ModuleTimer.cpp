@@ -35,7 +35,12 @@
 
 MRH_ModuleTimer::MRH_ModuleTimer(MRH_Uint32 u32_TimeMS) noexcept : c_End(TimePoint(Clock::now())),
                                                                    b_Set(false)
-{}
+{
+    if (u32_TimeMS > 0)
+    {
+        SetTimer(u32_TimeMS);
+    }
+}
 
 MRH_ModuleTimer::~MRH_ModuleTimer() noexcept
 {}
