@@ -73,14 +73,14 @@ Variables
       - std::deque<Job>
       - The jobs waiting to be performed by the threads.
       - Private
-	* - us_TotalCount
-	  - std::atomic<size_t>
-	  - The total count of job list slots.
-	  - Private
-	* - us_AvailableCount
-	  - std::atomic<size_t>
-	  - The amount of jobs available to perform.
-	  - Private
+    * - us_TotalCount
+      - std::atomic<size_t>
+      - The total count of job list slots.
+      - Private
+    * - us_AvailableCount
+      - std::atomic<size_t>
+      - The amount of jobs available to perform.
+      - Private
     * - c_WaitMutex
       - std::mutex
       - The mutex lock for the thread starting jobs.

@@ -1,9 +1,12 @@
 *******
 Modules
 *******
-Modules represent a current state of the application, from what 
-would be the initial welcome screen to a page in a food ordering 
-application.
+Modules represent a current state of the application. Modules allow 
+for a application to run in a ordered sequential style (think UI 
+windows in smartphone application). 
+
+A module can be anything required - it could be a simple output 
+generator or a reusable component to store input, for example.
 
 Module Creation
 ---------------
