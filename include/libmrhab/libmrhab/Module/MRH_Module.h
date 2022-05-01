@@ -73,9 +73,9 @@ public:
     //*************************************************************************************
     
     /**
-     *  Hand a recieved event to the module.
+     *  Hand a received event to the module.
      *
-     *  \param p_Event The recieved event.
+     *  \param p_Event The received event.
      */
     
     virtual void HandleEvent(const MRH_Event* p_Event) noexcept;

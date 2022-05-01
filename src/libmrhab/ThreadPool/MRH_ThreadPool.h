@@ -76,7 +76,7 @@ public:
     /**
      *  Add a event as a job. This function is thread safe.
      *
-     *  \param p_Event The recieved user event.
+     *  \param p_Event The received user event.
      *  \param p_Module The module meant to process the user event.
      */
     
