@@ -83,7 +83,7 @@ The callback function of a module will never be called on the main
 thread.
 
 The addition of jobs for modules should be handled in the 
-**MRH_RecieveEvent** function to be able to directly hand off 
+**MRH_ReceiveEvent** function to be able to directly hand off 
 recieved events to the library.
 
 The library will first check if the current module is able to handle 
@@ -102,11 +102,11 @@ an exception will be thrown.
     libmrhab* p_Context; // Existing, valid
     ...
 
-    void MRH_RecieveEvent(const MRH_Event* p_Event)
+    void MRH_ReceiveEvent(const MRH_Event* p_Event)
     {
         try
         {
-            // Add recieved event as library thread pool job
+            // Add received event as library thread pool job
             // for the current module
             p_Context->AddJob(p_Event);
         }
@@ -120,7 +120,7 @@ an exception will be thrown.
 Updating Modules
 ----------------
 libmrhab gives the current application module a specific point at 
-which it can update itself based on the recieved events. This 
+which it can update itself based on the received events. This 
 update point can be chosen by the application, but it is recommended 
 to place the module update inside the **MRH_SendEvent** function 
 to ensure that all updates happen on the main thread.
@@ -198,7 +198,7 @@ send them to platform services.
 Closing the Application
 -----------------------
 A application using libmrhab closes when either the module stack is empty 
-(last module popped) or if SIGTERM was recieved by the application parent.
+(last module popped) or if SIGTERM was received by the application parent.
 
 Handling expected application closure is handled by simply storing the 
 module update result and returning it in the **MRH_CanExit** function.
